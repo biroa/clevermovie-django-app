@@ -21,6 +21,18 @@ body::before {
     z-index: 9999;
 }
 
+body{
+    font-family: Anton, -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,"Noto Sans",sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol","Noto Color Emoji" !important;
+}
+
+.navbar {
+    padding: 1.5rem 1rem !important;
+}
+
+.navbar-brand{
+    font-size: 2rem !important;
+}
+
 /* global styles */
 
 .show {
@@ -28,7 +40,7 @@ body::before {
 }
 
 .hide {
-    display: none;
+    display: none !important;
 }
 
 .js-modal {
@@ -112,7 +124,7 @@ body::before {
 }
 
 .movies {
-    padding: 3rem 0;
+    padding: 10rem 0;
     border-radius: 4px;
     display: flex;
     flex-wrap: wrap;
@@ -145,7 +157,7 @@ body::before {
 }
 
 .movies__item-star {
-    z-index: 9998;
+    z-index: 100;
     color: #FAAA2B;
     top: 20%;
     font-size: 4rem;
@@ -177,8 +189,8 @@ body::before {
 }
 
 .movies__item-rating {
-    z-index: 9998;
-    font-size: 5rem;
+    z-index: 100;
+    font-size: 4.5rem;
     font-family: Anton, sans-serif;
     position: absolute;
     transform: translateX(-50%);
@@ -189,7 +201,7 @@ body::before {
 
 .movies__item-expander {
     font-weight: bold;
-    font-size: 1.4rem;
+    font-size: 1.2rem;
 	text-decoration: none;
     text-align: center;
     position: absolute;

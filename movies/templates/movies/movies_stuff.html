@@ -1,0 +1,110 @@
+<!doctype html>
+{% load static %}
+<html lang="en" class="h-100">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <title>Clever Movies with Python </title>
+
+    <link rel="canonical" href="https://getbootstrap.com/docs/4.3/examples/sticky-footer-navbar/">
+
+    <!-- Bootstrap core CSS -->
+	<link href="https://getbootstrap.com/docs/4.3/dist/css/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous">
+ 	<link rel="stylesheet" href='{% static "movies/app.css" %}' />
+    <!-- Font Awesome CSS -->
+    <link rel="stylesheet" href='{% static "movies/all.css" %}' />
+
+    <style>
+      .bd-placeholder-img {
+        font-size: 1.125rem;
+        text-anchor: middle;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        user-select: none;
+      }
+
+      @media (min-width: 768px) {
+        .bd-placeholder-img-lg {
+          font-size: 3.5rem;
+        }
+      }
+    </style>
+    <!-- Custom styles for this template -->
+    <link href="{% static 'movies/sticky-footer-navbar.css' %}" rel="stylesheet">
+  </head>
+  <body class="d-flex flex-column h-100">
+    <header>
+  		<!-- Fixed navbar -->
+  		<nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
+    	<a class="navbar-brand text-warning" href="/">Clever Movie</a>
+    	<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarCollapse">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item active">
+          <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">Link</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
+        </li>
+      </ul>
+
+      <form class="form-inline mt-2 mt-md-0" action="" name="search">
+        <input name="query" class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search" value="{{request.GET.query}}">
+        <button class="btn btn-outline-warning my-2 my-sm-0" type="submit">Search</button>
+      </form>
+        <button type="button" class="btn btn-outline-warning my-2 mx-md-1" data-toggle="modal" data-target="#modal-create">
+            Add new movie
+        </button>
+    </div>
+  </nav>
+</header>
+
+<!-- Begin page content -->
+<main role="main" class="flex-shrink-0">
+  <section class="result">
+    <div class="container">
+        <div class="movies">
+        	{% for movie in search_result %}
+        		<div class="movies__item">
+                    <i class="movies__item-star fa fa-star hide"></i>
+                    <p class="movies__item-rating hide">{{movie.fields.Rating}} / 10</p>
+                    <button type="button" class="movies__item-expander hide" data-toggle="modal" data-target="#modal-{{movie.id}}">
+                    	View Details
+                    </button>
+        			<img class=movies__item-image src="{{ movie.fields.Pictures.0.url}}" alt="">
+            		<div class="movies__item-title">
+                        <p>{{movie.fields.Name}}</p>
+                    </div>
+        		</div>
+            	{% include 'movies/detail-modal.html' %}
+        	{% endfor %}
+        </div>
+  	</div>
+   </section>
+</main>
+
+
+<footer class="footer mt-auto py-3">
+  <div class="container">
+    <span class="text-muted">Copyright &copy; by Adam Biro</span>
+  </div>
+</footer>
+
+{% include 'movies/create-modal.html' %}
+
+<!-- Used JavaScript code -->
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+      <script>window.jQuery || document.write('<script src="/docs/4.3/assets/js/vendor/jquery-slim.min.js"><\/script>')</script>
+      <script src="https://getbootstrap.com/docs/4.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
+
+      <script src="{% static 'movies/app.js' %}"></script>
+</body>
+</html>
+

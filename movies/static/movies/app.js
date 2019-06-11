@@ -35,7 +35,7 @@ function main() {
         $(this).find('.movies__item-delete-button').toggleClass('hide');
     });
 
-    modal();
+    //modal();
 }
 
 $(document).ready(main());
