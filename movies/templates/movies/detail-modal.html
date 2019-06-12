@@ -8,18 +8,18 @@
         </button>
       </div>
       <div class="modal-body">
-        <div class="movies__item full-width">
+        <div class="movies__item__view full-width">
         	<i class="movies__item-star fa fa-star hide"></i>
-            <p class="movies__item-rating hide">{{movie.fields.Rating}}</p>
-            <img src="{{movie.fields.Pictures.0.url}}" alt="{{movie.fields.Name}}" class="movies item-image" />
+            <p class="movies__item-rating hide">{{ movie.fields.Rating }}/10</p>
+            <img src="{{ movie.fields.Pictures.0.url }}" alt="{{ movie.fields.Name }}" class="movies item-image" />
             <div class="movies__item-title">
-				<p>{{movies.fields.Notes}}</p>
+				<p>{{ movie.fields.Notes }} </p>
             </div>
         </div>
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-warning" data-dismiss="modal">Close</button>
-        <!-- <button type="button" class="btn btn-primary">Save changes</button> -->
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-warning" data-toggle="modal" data-target="#edit-modal-{{movie.id}}">Edit details</button>
       </div>
     </div>
   </div>

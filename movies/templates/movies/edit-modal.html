@@ -1,0 +1,47 @@
+<div class="modal fade" id="edit-modal-{{movie.id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+          <h5 class="modal-title" id="modalName">Edit the movie of <i>{{movie.fields.Name}}</i> </h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+		<!-- --== Form Open ==-- -->
+      <form action="{% url 'edit' movie_id=movie.id %}" method="post">
+          {% csrf_token %}
+      	<div class="modal-body">
+                <!-- --== Group ==-- -->
+                <div class="form-group">
+                    <label for="editName">Name</label>
+                    <input id="editName" type="text" class="form-control" placeholder="Enter name" name="name" value="{{movie.fields.Name}}" />
+                </div>
+
+                <!-- --== Group ==-- -->
+                <div class="form-group">
+                    <label for="editUrl">Image url</label>
+                    <input id="editUrl" type="text" class="form-control" placeholder="url" name="url" value={{movie.fields.Pictures.0.url}} />
+                </div>
+
+                <!-- --== Group ==-- -->
+                <div class="form-group">
+                    <label for="editRating">Rating</label>
+                    <input id="editRating" type="number" class="form-control" placeholder="1-10" name="rating" value={{movie.fields.Rating}} />
+                </div>
+
+                <!-- --== Group ==-- -->
+                <div class="form-group">
+                    <label for="editNotes">Notes</label>
+                    <textarea id="editNotes" class="form-control" placeholder="Edit Notes" name="notes">{{movie.fields.Notes}}</textarea>
+                </div>
+
+      	</div>
+
+        <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            <button type="submit" class="btn btn-warning" data-toggle="modal" data-target="#edit-modal-{{movie.id}}">Edit details</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

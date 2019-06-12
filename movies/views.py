@@ -22,7 +22,7 @@ def home_page(request):
 
 
 def create(request):
-
+    # Picture is a list of dictionary
     if request.method == 'POST':
         data = {
             'Name': request.POST.get('name'),
@@ -34,3 +34,15 @@ def create(request):
 
     return redirect('/')
 
+def edit(request, movie_id):
+    # Picture is a list of dictionary
+    if request.method == 'POST':
+        data = {
+            'Name': request.POST.get('name'),
+            'Pictures': [{'url': request.POST.get('url')}],
+            'Rating': int(request.POST.get('rating')),
+            'Notes': request.POST.get('notes'),
+        }
+        AT.update(movie_id, data);
+
+    return redirect('/')
