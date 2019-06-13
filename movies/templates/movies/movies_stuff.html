@@ -70,6 +70,19 @@
 <main role="main" class="flex-shrink-0">
   <section class="result">
     <div class="container">
+
+        <!-- --==Notifications Start==-- -->
+		{% if messages %}
+        	{% for message in messages %}
+        		<div class="alert alert-{{ message.tags }}" role="alert">
+        			<a href="" class="close" data-dismiss="alert">&times;</a>
+                    {{message}}
+        		</div>
+			{% endfor %}
+        {% endif %}
+        <!-- --==Notifications End==-- -->
+
+        <!-- --==Show All Movies==-- -->
         <div class="movies">
         	{% for movie in search_result %}
         		<div class="movies__item">

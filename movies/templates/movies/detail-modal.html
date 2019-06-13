@@ -12,13 +12,14 @@
         	<i class="movies__item-star fa fa-star hide"></i>
             <p class="movies__item-rating hide">{{ movie.fields.Rating }}/10</p>
             <img src="{{ movie.fields.Pictures.0.url }}" alt="{{ movie.fields.Name }}" class="movies item-image" />
-            <div class="movies__item-title">
-				<p>{{ movie.fields.Notes }} </p>
+            <div class="movies__view__item-title-wrapper">
+				<p class="movies__view__item-title">{{ movie.fields.Notes }} </p>
             </div>
         </div>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <a class="btn btn-danger" href="{% url 'delete' movie_id=movie.id  %}" role="button">Delete</a>
         <button type="button" class="btn btn-warning" data-toggle="modal" data-target="#edit-modal-{{movie.id}}">Edit details</button>
       </div>
     </div>
